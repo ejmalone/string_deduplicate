@@ -1,6 +1,5 @@
-import timely from 'timely'
 import { IS_GENERATING, GENERATED_EMAILS, DEDUPLICATE_EMAILS } from './actions'
-import deduplicateEmails from './lib/deduplicate'
+import { timedDeduplicateStrings } from './lib/deduplicate'
 
 const initialState = {
    inputEmails: [],
@@ -28,15 +27,12 @@ export default (state = initialState, action) => {
          })
 
       case DEDUPLICATE_EMAILS:
-      
-         // using the simple synchronous version of timely, which
-         // sets the time taken on the timedDedup function
-         let timedDedup = timely(deduplicateEmails)
-         let deduplicatedEmails = timedDedup(action.emails)
+         
+         const result = timedDeduplicateStrings(action.emails)
       
          return Object.assign({}, state, {
-            deduplicatedEmails: deduplicatedEmails,
-            timeTaken: timedDedup.time 
+            deduplicatedEmails: result.strings,
+            timeTaken: result.timeMs 
          })
 
       default:

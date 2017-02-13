@@ -1,31 +1,49 @@
+import timely from 'timely'
+
 /**
- * Deduplicates an array of strings (i.e. email addresses)
+ * Deduplicates an array of strings (i.e. value addresses)
  *
- * @param String[] emails
- * @return String[] of emails, preserving order
+ * @param String[] strings
+ * @return String[] of unique values, preserving order
  *
- * @throws TypeError if emails is not an array
+ * @throws TypeError if strings is not an array
  */
-export default function(emails = []) {
+export function deduplicateStrings(strings = []) {
   	
-	if (!emails instanceof Array)
+	if (!strings instanceof Array)
 		throw new TypeError('deduplicate requires an array')
 
    const found = {}
    const result = []
 
-   emails.reduce((accumulator, email) => {
+   strings.reduce((accumulator, value) => {
       
-      if (found[email] != undefined)
+      if (found[value] != undefined)
          return accumulator
 
-      found[email] = true
+      found[value] = true
 
-      accumulator.push(email)
+      accumulator.push(value)
 
       return accumulator
 
    }, result)
    
    return result
+}
+
+/**
+ * timed version of deduplicateStrings, only changing return signature
+ * to include the time taken and the strings as keys of an obect
+ *
+ * @return Object with keys timeMs (int), strings (String[])
+ */
+export function timedDeduplicateStrings(strings = []) {
+
+   // using the simple synchronous version of timely, which
+   // sets the time taken on the timedDedup function
+   let timedDedup = timely(deduplicateStrings)
+   let deduplicated = timedDedup(strings)
+
+   return { timeMs: timedDedup.time, strings: deduplicated }
 }
