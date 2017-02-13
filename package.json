@@ -1,0 +1,33 @@
+{
+  "name": "string_deduplication",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "babel-preset-react": "^6.22.0",
+    "faker": "^3.1.0",
+    "fs": "0.0.1-security",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-redux": "^5.0.2",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0",
+    "timely": "^0.1.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.22.1",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-register": "^6.22.0",
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0",
+    "webpack": "^2.2.1"
+  },
+  "scripts": {
+    "test": "mocha --compilers js:babel-register",
+    "test-deduplicate-validation": "mocha --compilers js:babel-register --grep validation",
+    "test-deduplicate-runtime": "mocha --compilers js:babel-register --grep runtime"
+  },
+  "author": "<Eric Malone> ejmalone@gmail.com",
+  "license": "ISC"
+}

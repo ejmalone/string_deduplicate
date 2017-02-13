@@ -1,0 +1,30 @@
+div,  a {
+   text-align: center;
+}
+
+ul, ul li {
+   text-align: left;
+}
+
+#root {
+   margin-top: 50px;
+}
+
+textarea {
+   width: 90%;
+}
+
+/* @see http://stackoverflow.com/questions/14793367/how-to-add-a-spinner-icon-to-button-when-its-in-the-loading-state */
+.spinner {
+   animation: spin 2s infinite linear;
+   display: none;
+}
+
+.spinner.visible {
+   display: inline-block;
+}
+
+@keyframes spin {
+   from { transform: scale(1) rotate(0deg); }
+   to { transform: scale(1) rotate(360deg); }
+}
