@@ -1,6 +1,6 @@
-String Deduplicator
+String Deduplicator Sample Project
 
-See the live code at http://code.ericmalone.net/string\_deduplicate/
+See the live code [here](http://code.ericmalone.net/string_deduplicate/)
 
 
 # Overview
